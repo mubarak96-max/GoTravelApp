@@ -20,7 +20,7 @@ const ItemDetails = ({ route }) => {
   }, []);
 
   const data = route?.params;
-  //   console.log(data?.item?.photo);
+  console.log(data?.item);
 
   return (
     <SafeAreaView className='mt-8 flex-1 relative bg-white'>
@@ -80,7 +80,7 @@ const ItemDetails = ({ route }) => {
         </View>
 
         <View className='flex-row justify-between items-center mt-8'>
-          {data?.item?.rating && (
+          {data?.item?.rating ? (
             <View className='flex-row items-center space-x-2'>
               <View className='w-10 h-10 bg-red-200 rounded-2xl shadow-md justify-center items-center'>
                 <FontAwesome name='star' size={24} color='white' />
@@ -91,9 +91,11 @@ const ItemDetails = ({ route }) => {
                 <Text className='text-purple-900'>Ratings</Text>
               </View>
             </View>
+          ) : (
+            <></>
           )}
 
-          {data?.item?.price_level && (
+          {data?.item?.price_level ? (
             <View className='flex-row items-center space-x-2'>
               <View className='w-10 h-10 bg-red-200 rounded-2xl shadow-md justify-center items-center'>
                 <MaterialIcons name='attach-money' size={24} color='black' />
@@ -106,8 +108,10 @@ const ItemDetails = ({ route }) => {
                 <Text className='text-purple-900'>Price Level</Text>
               </View>
             </View>
+          ) : (
+            <></>
           )}
-          {data?.item?.bearing && (
+          {data?.item?.bearing ? (
             <View className='flex-row items-center space-x-2'>
               <View className='w-10 h-10 bg-red-200 rounded-2xl shadow-md justify-center items-center'>
                 <FontAwesome5 name='map-signs' size={24} color='black' />
@@ -118,16 +122,20 @@ const ItemDetails = ({ route }) => {
                 <Text className='text-purple-900'>Bearings</Text>
               </View>
             </View>
+          ) : (
+            <></>
           )}
         </View>
 
-        {data?.item?.description && (
+        {data?.item?.description ? (
           <Text className='my-4 tracking-wide text-[18px] text-gray-500 font-semibold'>
             {data?.item?.description}
           </Text>
+        ) : (
+          <></>
         )}
 
-        {data?.item?.cuisine && (
+        {data?.item?.cuisine ? (
           <View className='flex-row flex-wrap gap-2 items-center justify-start mt-4'>
             {data?.item?.cuisine?.map((c) => (
               <TouchableOpacity
@@ -138,26 +146,34 @@ const ItemDetails = ({ route }) => {
               </TouchableOpacity>
             ))}
           </View>
+        ) : (
+          <></>
         )}
 
         <View className='bg-gray-300 mt-4 space-y-2 px-2 py-2 rounded-xl'>
-          {data?.item?.phone && (
+          {data?.item?.phone ? (
             <View className='flex-row space-x-2 items-center'>
               <FontAwesome name='phone' size={20} color='darkgreen' />
               <Text className='text-xl'>{data?.item?.phone}</Text>
             </View>
+          ) : (
+            <></>
           )}
-          {data?.item?.email && (
+          {data?.item?.email ? (
             <View className='flex-row space-x-2 items-center'>
               <FontAwesome name='envelope' size={20} color='darkgreen' />
               <Text className='text-xl'>{data?.item?.email}</Text>
             </View>
+          ) : (
+            <></>
           )}
-          {data?.item?.address && (
+          {data?.item?.address ? (
             <View className='flex-row space-x-2 items-center'>
               <FontAwesome name='map-pin' size={20} color='darkgreen' />
               <Text className='text-xl'>{data?.item?.address}</Text>
             </View>
+          ) : (
+            <></>
           )}
 
           <View className='mt-6 px-4 py-4 rounded-lg bg-blue-400 items-center justify-center mb-6'>
